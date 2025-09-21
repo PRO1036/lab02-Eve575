@@ -42,14 +42,15 @@ plastic_waste <- plastic_waste %>%
 ```{r plastic-waste-continent}
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_histogram() +
-  facet_grid("continent")
-
+  facet_grid(. ~ continent)
 ```
 
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent)) +
+    geom_density()
+  
 ```
 
 Réponse à la question...

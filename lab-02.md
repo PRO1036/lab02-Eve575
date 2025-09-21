@@ -38,7 +38,7 @@ plastic_waste \<- plastic_waste %\>% filter(plastic_waste_per_cap \<
 ``` r
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_histogram() +
-  facet_grid("continent")
+  facet_grid(. ~ continent)
 ```
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
@@ -48,8 +48,11 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 ### Exercise 2
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent)) +
+    geom_density()
 ```
+
+![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
 
 Réponse à la question…
 
