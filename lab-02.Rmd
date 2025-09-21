@@ -78,7 +78,10 @@ Le violin plot permet d'avoir une meilleure visualisation de l'étendue des donn
 
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+library(gscatter)
+ggplot(plastic_waste, aes(x = total_pop, y = mismanaged_plastic_waste, colour = continent)) +
+  geom_point()
+  
 ```
 
 Réponse à la question...
@@ -87,11 +90,13 @@ Réponse à la question...
 
 
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram()
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(plastic_waste, aes(x = total_pop)) +
+  geom_histogram()
 ```
 
 Réponse à la question...
