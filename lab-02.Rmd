@@ -50,7 +50,8 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 
 ```{r plastic-waste-density}
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent, fill = continent)) +
-    geom_density(alpha = 0.4)
+    geom_density(alpha = 0.4) +
+  labs(title = "Le densité de déchets plastiques par habitant", subtitle = "Pour chaque continent", x = "Nombre de déchets plastiques par habitant", y = "La densité")
   
 ```
 
@@ -62,14 +63,17 @@ Boxplot:
 
 ```{r plastic-waste-boxplot}
 ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
-  geom_boxplot()
+  geom_boxplot()+
+  labs(title = "Le nombre de déchets plastiques par habtitant pour chaque continent", x = "Continents", y = "Nombre de déchets plastiques par habitants")
+
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
 ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
-  geom_violin()
+  geom_violin() +
+   labs(title = "Le nombre de déchets plastiques par habtitant pour chaque continent", x = "Continents", y = "Nombre de déchets plastiques par habitants")
 ```
 
 Le violin plot permet d'avoir une meilleure visualisation de l'étendue des données puisque la distribution des données est démontré a l'aide de la forme. 
@@ -79,7 +83,8 @@ Le violin plot permet d'avoir une meilleure visualisation de l'étendue des donn
 
 ```{r plastic-waste-mismanaged}
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, colour = continent)) +
-  geom_point()
+  geom_point() + 
+  labs(title = "Nombre de déchets plastiques produits vs non gérés par habitant", x = "Nombre de déchets plastiques par habtitant", y = "Nombre de déchets plastiques non gérés par habitant")
   
 ```
 Il est possible d'observer que les pays qui ont une plus grande consommations de déchets par habitant on en générale moins de déchets non gérés.De plus, il y une forte concentration de donnée au début des axes et cela montre une utilisation de plastic par habitant plutôt similaire au nombre de déchet non gérés.
@@ -106,5 +111,10 @@ Réponse à la question...
 Recréez la visualisation:
 
 ```{r recreate-viz}
-# insert code here
+ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, colour = continent)) +
+  geom_point() +
+  labs(title = "Quantité de déchets plastiques vs Propotion de la population cotière", subtitle = "Selon le continent", x = "Proportion de la population Cotière(Coastal/ total population)", y = "Nombre de déchets plastiques par habitant")
+Plastic_waste_coastal <- plastic_waste %>%
+  mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
+  filter(plastic_waste_per_cap < 3)
 ```

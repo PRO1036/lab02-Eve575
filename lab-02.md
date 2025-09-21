@@ -47,7 +47,8 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent, fill = continent)) +
-    geom_density(alpha = 0.4)
+    geom_density(alpha = 0.4) +
+  labs(title = "Le densité de déchets plastiques par habitant", subtitle = "Pour chaque continent", x = "Nombre de déchets plastiques par habitant", y = "La densité")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
@@ -63,7 +64,8 @@ Boxplot:
 
 ``` r
 ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
-  geom_boxplot()
+  geom_boxplot()+
+  labs(title = "Le nombre de déchets plastiques par habtitant pour chaque continent", x = "Continents", y = "Nombre de déchets plastiques par habitants")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-boxplot-1.png)<!-- -->
@@ -72,7 +74,8 @@ Violin plot:
 
 ``` r
 ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
-  geom_violin()
+  geom_violin() +
+   labs(title = "Le nombre de déchets plastiques par habtitant pour chaque continent", x = "Continents", y = "Nombre de déchets plastiques par habitants")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
@@ -85,7 +88,8 @@ la forme.
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, colour = continent)) +
-  geom_point()
+  geom_point() + 
+  labs(title = "Nombre de déchets plastiques produits vs non gérés par habitant", x = "Nombre de déchets plastiques par habtitant", y = "Nombre de déchets plastiques non gérés par habitant")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- --> Il
@@ -132,5 +136,15 @@ Réponse à la question…
 Recréez la visualisation:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, colour = continent)) +
+  geom_point() +
+  labs(title = "Quantité de déchets plastiques vs Propotion de la population cotière", subtitle = "Selon le continent", x = "Proportion de la population Cotière(Coastal/ total population)", y = "Nombre de déchets plastiques par habitant")
+```
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
+
+``` r
+Plastic_waste_coastal <- plastic_waste %>%
+  mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
+  filter(plastic_waste_per_cap < 3)
 ```
