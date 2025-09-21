@@ -48,13 +48,16 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 ### Exercise 2
 
 ``` r
-ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent)) +
-    geom_density()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent, fill = continent)) +
+    geom_density(alpha = 0.4)
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
 
-Réponse à la question…
+Le réglage de la couleur se fait dans aes puisque ces modifications
+dépendent des données. Le réglage de alpha se fait dans la section geom
+puisque cette propriétée ne dépend pas des variables du graphique, mais
+plutôt de l’allure du graphique.
 
 ### Exercise 3
 
