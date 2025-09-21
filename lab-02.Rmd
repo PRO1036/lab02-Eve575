@@ -61,16 +61,18 @@ Le réglage de la couleur se fait dans aes puisque ces modifications dépendent 
 Boxplot:
 
 ```{r plastic-waste-boxplot}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question...
+Le violin plot permet d'avoir une meilleure visualisation de l'étendue des données puisque la distribution des données est démontré a l'aide de la forme. 
 
 ### Exercise 4
 

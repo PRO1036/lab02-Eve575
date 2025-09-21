@@ -64,16 +64,24 @@ plutôt de l’allure du graphique.
 Boxplot:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
+
+![](lab-02_files/figure-gfm/plastic-waste-boxplot-1.png)<!-- -->
 
 Violin plot:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question…
+![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
+
+Le violin plot permet d’avoir une meilleure visualisation de l’étendue
+des données puisque la distribution des données est démontré a l’aide de
+la forme.
 
 ### Exercise 4
 
