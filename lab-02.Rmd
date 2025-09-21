@@ -41,8 +41,8 @@ plastic_waste <- plastic_waste %>%
 
 ```{r plastic-waste-continent}
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
-  geom_histogram() +
-  facet_grid(. ~ continent)
+  geom_histogram(binwidth = 0.25) +
+  facet_wrap(~ continent)
 
 ```
 
@@ -78,13 +78,13 @@ Le violin plot permet d'avoir une meilleure visualisation de l'étendue des donn
 
 
 ```{r plastic-waste-mismanaged}
-library(gscatter)
-ggplot(plastic_waste, aes(x = total_pop, y = mismanaged_plastic_waste, colour = continent)) +
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, colour = continent)) +
   geom_point()
   
 ```
+Il est possible d'observer que les pays qui ont une plus grande consommations de déchets par habitant on en générale moins de déchets non gérés.De plus, il y une forte concentration de donnée au début des axes et cela montre une utilisation de plastic par habitant plutôt similaire au nombre de déchet non gérés.
 
-Réponse à la question...
+Les continants plus dévelloper comme l'amérique du Nord et l'Europe on moins de déchet non gérés par rapport a la quantité de déchet qu'ils produisent malgré le fait qu'ils produisent plus de déchet que d'autre continents. Cependant les continents qui on plus de déchets non gérés on un rapport déchet non géré et déchet par habitants plus élevé et ce sont des endroits qui continnent des pays plus en difficulté en général. 
 
 ### Exercise 5
 
