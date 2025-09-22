@@ -139,11 +139,11 @@ Recréez la visualisation:
 ``` r
 ggplot(plastic_waste, aes(x = coastal_pop / total_pop, y = plastic_waste_per_cap, colour = continent)) +
   geom_point() +
-  geom_smooth() +
+  geom_smooth(aes(group = 1), method = "loess", color = "black", se = TRUE) +
   labs(title = "Quantité de déchets plastiques vs Propotion de la population cotière", subtitle = "Selon le continent", x = "Proportion de la population Cotière(Coastal/ total population)", y = "Nombre de déchets plastiques par habitant")
 ```
 
-    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+    ## `geom_smooth()` using formula = 'y ~ x'
 
     ## Warning: Removed 10 rows containing non-finite outside the scale range
     ## (`stat_smooth()`).
