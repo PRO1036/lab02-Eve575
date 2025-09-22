@@ -109,37 +109,47 @@ des endroits qui continnent des pays plus en difficulté en général.
 ### Exercise 5
 
 ``` r
-ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
-  geom_histogram()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = total_pop)) +
+  geom_point() +
+   labs(title = "Nombre de déchets plastiques par habtiant pour la population total", x = "Nombre de déchets plastiques par habtitant", y = "Population")
 ```
 
-    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
 
 ![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
 
 ``` r
-ggplot(plastic_waste, aes(x = total_pop)) +
-  geom_histogram()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
+  geom_point() +
+  labs(title = "Nombre de déchets plastiques par habtiant pour la population Cotière", x = "Nombre de déchets plastiques par habtitant", y = "Population Cotière")
 ```
-
-    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-
-    ## Warning: Removed 10 rows containing non-finite outside the scale range
-    ## (`stat_bin()`).
 
 ![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
 
-Réponse à la question…
+Oui, il semble avoir une relation un peu plus forte entre la population
+total et le noombre de déchets par habitant. Cependant, il semble avoir
+plus de population du coter cotier donc la relation semble être plutôt
+semblable.
 
 ## Conclusion
 
 Recréez la visualisation:
 
 ``` r
-ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, colour = continent)) +
+ggplot(plastic_waste, aes(x = coastal_pop / total_pop, y = plastic_waste_per_cap, colour = continent)) +
   geom_point() +
+  geom_smooth() +
   labs(title = "Quantité de déchets plastiques vs Propotion de la population cotière", subtitle = "Selon le continent", x = "Proportion de la population Cotière(Coastal/ total population)", y = "Nombre de déchets plastiques par habitant")
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+
+    ## Warning: Removed 10 rows containing non-finite outside the scale range
+    ## (`stat_smooth()`).
+
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
 
 ![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
 
@@ -148,3 +158,6 @@ Plastic_waste_coastal <- plastic_waste %>%
   mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
   filter(plastic_waste_per_cap < 3)
 ```
+
+Il y a une proportion non linéaire entre le nombre de déchets plastiques
+avec la population Cotière.

@@ -95,26 +95,35 @@ Les continants plus dévelloper comme l'amérique du Nord et l'Europe on moins d
 
 
 ```{r plastic-waste-population-total}
-ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
-  geom_histogram()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = total_pop)) +
+  geom_point() +
+   labs(title = "Nombre de déchets plastiques par habtiant pour la population total", x = "Nombre de déchets plastiques par habtitant", y = "Population")
+
 ```
 
 ```{r plastic-waste-population-coastal}
-ggplot(plastic_waste, aes(x = total_pop)) +
-  geom_histogram()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
+  geom_point() +
+  labs(title = "Nombre de déchets plastiques par habtiant pour la population Cotière", x = "Nombre de déchets plastiques par habtitant", y = "Population Cotière")
 ```
 
-Réponse à la question...
+Oui, il semble avoir une relation un peu plus forte entre la population total et le noombre de déchets par habitant. Cependant, il semble avoir plus de population du coter cotier donc la relation semble être plutôt semblable. 
 
 ## Conclusion
 
 Recréez la visualisation:
 
 ```{r recreate-viz}
-ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, colour = continent)) +
+ggplot(plastic_waste, aes(x = coastal_pop / total_pop, y = plastic_waste_per_cap, colour = continent)) +
   geom_point() +
+  geom_smooth() +
   labs(title = "Quantité de déchets plastiques vs Propotion de la population cotière", subtitle = "Selon le continent", x = "Proportion de la population Cotière(Coastal/ total population)", y = "Nombre de déchets plastiques par habitant")
 Plastic_waste_coastal <- plastic_waste %>%
   mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
   filter(plastic_waste_per_cap < 3)
+
 ```
+
+
+
+Il y a une proportion non linéaire entre le nombre de déchets plastiques avec la population Cotière.
