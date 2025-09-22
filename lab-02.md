@@ -127,10 +127,10 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
 
 ![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
 
-Oui, il semble avoir une relation un peu plus forte entre la population
-total et le noombre de déchets par habitant. Cependant, il semble avoir
-plus de population du coter cotier donc la relation semble être plutôt
-semblable.
+Oui, il semble avoir une relation un peu plus forte (graphique 2) entre
+la population cotière et le noombre de déchets par habitant. Cependant,
+il semble avoir plus de population du coter cotier donc la relation
+semble être plutôt semblable.
 
 ## Conclusion
 

@@ -107,7 +107,7 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
   labs(title = "Nombre de déchets plastiques par habtiant pour la population Cotière", x = "Nombre de déchets plastiques par habtitant", y = "Population Cotière")
 ```
 
-Oui, il semble avoir une relation un peu plus forte entre la population total et le noombre de déchets par habitant. Cependant, il semble avoir plus de population du coter cotier donc la relation semble être plutôt semblable. 
+Oui, il semble avoir une relation un peu plus forte (graphique 2) entre la population cotière et le noombre de déchets par habitant. Cependant, il semble avoir plus de population du coter cotier donc la relation semble être plutôt semblable. 
 
 ## Conclusion
 
